@@ -1,10 +1,9 @@
+//PredictionController.java
 package com.example.mlapi;
 
 import hex.genmodel.easy.RowData;
-import hex.genmodel.easy.prediction.BinomialModelPrediction;
+import hex.genmodel.easy.prediction.MultinomialModelPrediction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,14 +14,13 @@ public class PredictionController {
     private PredictionService predictionService;
 
     @PostMapping
-    public ResponseEntity<Object> predict(@RequestBody RowData rowData) {
+    public MultinomialModelPrediction predict(@RequestBody RowData rowData) {
         try {
-            BinomialModelPrediction prediction = predictionService.predict(rowData);
-            return ResponseEntity.ok(prediction);
+            return predictionService.predict(rowData);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Prediction failed: " + e.getMessage());
+            throw new RuntimeException("Prediction failed");
         }
     }
 }
+
