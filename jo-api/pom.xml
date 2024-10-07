@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-	<groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.7.5</version>
-    <relativePath/> <!-- lookup parent from repository -->
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.3</version>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>mlapi</artifactId>
@@ -43,12 +43,14 @@
 	
 		<dependency>
 			<groupId>ai.h2o</groupId>
-			<artifactId>h2o-genmodel</artifactId> <!-- Updated artifact ID -->
+			<artifactId>genmodel</artifactId>
 			<version>3.36.1.4</version> 
-			<!-- Remove scope and systemPath -->
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/resources/h2o-genmodel.jar</systemPath>
 		</dependency>
 
 	</dependencies>
+
 
 	<build>
 		<plugins>
