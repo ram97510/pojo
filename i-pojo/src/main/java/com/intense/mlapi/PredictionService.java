@@ -67,7 +67,7 @@ public class PredictionService {
     private final EasyPredictModelWrapper model;
 
     public PredictionService() throws Exception {
-        // Path to the models directory
+        
         String modelsPath = "src\\main\\java\\com\\intense\\mlapi\\models";
         
         // Get the file name of the model Java file (without the .java extension)
